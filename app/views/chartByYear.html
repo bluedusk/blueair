@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-lg-12 page-header" style="font-size: 36px">
+北京 
+<select ng-model="search.year" ng-change="goSearchY()">
+    <option value="2008">2008</option>
+    <option value="2009">2009</option>
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    <option value="2014">2014</option>
+    <option value="2015">2015</option>
+</select>
+年
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+<div class="row">
+<div class="col-lg-6 col-sm-12" id="pie-chart" >
+    <div class="panel panel-default">
+        <div class="panel-heading">空气质量比例</div>
+        <div class="panel-body">
+            <canvas id="aqi_annual_pie" class="chart chart-pie chart-xs" data="aqi_annual_pie.data" labels="aqi_annual_pie.labels" colours="aqi_annual_pie.colours" legend="true" options="aqi_annual_pie.options"></canvas>
+        </div>
+    </div>
+</div>
+    <div class="col-lg-6 col-sm-12" id="line-chart" >
+        <div class="panel panel-default">
+            <div class="panel-heading">每月空气质量</div>
+            <div class="panel-body">
+                <canvas id="aqi_y_line" class="chart chart-line chart-xl" data="aqi_y_line.data" labels="aqi_y_line.labels" legend="true"
+                click="aqi_y_line.onClick" series="aqi_y_line.series" colours="aqi_y_line.colours"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-lg-6 col-sm-12" id="bar-chart" >
+    <div class="panel panel-default">
+        <div class="panel-heading">每年空气质量</div>
+        <div class="panel-body">
+            <canvas id="aqi_all_bar" class="chart chart-bar" data="aqi_all_bar.data" labels="aqi_all_bar.labels" series="aqi_all_bar.series"
+            options="aqi_all_bar.options"></canvas>
+        </div>
+    </div>
+</div>
+    
+</div>
+

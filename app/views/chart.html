@@ -1,88 +1,125 @@
+
 <div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Charts</h1>
+    <div class="col-lg-12 page-header" style="font-size: 36px">
+北京 
+<select ng-model="search.year" ng-change="goSearchM()">
+    <option value="2008">2008</option>
+    <option value="2009">2009</option>
+    <option value="2010">2010</option>
+    <option value="2015">2015</option>
+</select>
+年
+<select ng-model="search.month" ng-change="goSearchM()">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+</select>
+月
     </div>
     <!-- /.col-lg-12 -->
 </div>
-<div class="row">
-<div class="col-lg-6 col-sm-12" id="pie-chart" >
-    <div class="panel panel-default">
-        <div class="panel-heading">空气质量比例</div>
-        <div class="panel-body">
-            <canvas id="aqi_monthly_pie" class="chart chart-pie chart-xs" data="aqi_monthly_pie.data" labels="aqi_monthly_pie.labels" colours="aqi_monthly_pie.colours" legend="true"></canvas>
-        </div>
-    </div>
+
+<div ng-if="!hasMValue">
+  
+  <div class="alert alert-danger">
+      oops... 还没有本月数据哦.
+  </div>  
+
 </div>
-    <div class="col-lg-6 col-sm-12" id="bar-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Bar Chart</div>
-            <div class="panel-body">
-                <canvas id="bar" class="chart chart-bar" data="bar.data" labels="bar.labels" series="bar.series"
-                options="bar.options"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-6 col-sm-12" id="line-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Line Chart</div>
-            <div class="panel-body">
-                <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
-                click="line.onClick" series="line.series"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-sm-12" id="bar-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Bar Chart</div>
-            <div class="panel-body">
-                <canvas id="bar" class="chart chart-bar" data="bar.data" labels="bar.labels" series="bar.series"
-                options="bar.options"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-6 col-sm-12" id="doughnut-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Doughnut Chart</div>
-            <div class="panel-body">
-            <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="donut.data" labels="donut.labels" legend="false"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-sm-12" id="radar-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Radar Chart</div>
-            <div class="panel-body">
-                <canvas id="area" class="chart chart-radar" data="radar.data" labels="radar.labels" click="onClick"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-sm-12" id="pie-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Pie Chart</div>
-            <div class="panel-body">
-                <canvas id="pie" class="chart chart-pie chart-xs" data="pie.data" labels="pie.labels"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-sm-12" id="polar area-chart" >
+<div id="chartDiv" ng-if="hasMValue">
+  
+  <div class="row">
+  <div class="col-lg-6 col-sm-12" id="pie-chart" >
       <div class="panel panel-default">
-        <div class="panel-heading">Polar Area Chart</div>
-        <div class="panel-body">
-          <canvas id="polar" class="chart chart-polar-area" data="polar.data" labels="polar.labels"></canvas>
+          <div class="panel-heading">空气质量比例</div>
+          <div class="panel-body">
+              <canvas id="aqi_monthly_pie" class="chart chart-pie chart-xs" data="aqi_monthly_pie.data" labels="aqi_monthly_pie.labels" colours="aqi_monthly_pie.colours" legend="true" options="aqi_monthly_pie.options"></canvas>
+          </div>
+      </div>
+  </div>
+      <div class="col-lg-6 col-sm-12" id="line-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">每天空气质量</div>
+              <div class="panel-body">
+                  <canvas id="aqi_monthly_line" class="chart chart-line chart-xl" data="aqi_monthly_line.data" labels="aqi_monthly_line.labels" legend="true"
+                  click="aqi_monthly_line.onClick" series="aqi_monthly_line.series"></canvas>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div ng-if="false">
+  <div class="row">
+      <div class="col-lg-6 col-sm-12" id="line-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Line Chart</div>
+              <div class="panel-body">
+                  <canvas id="line" class="chart chart-line chart-xl" data="line.data" labels="line.labels" legend="true"
+                  click="line.onClick" series="line.series"></canvas>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-6 col-sm-12" id="bar-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Bar Chart</div>
+              <div class="panel-body">
+                  <canvas id="bar" class="chart chart-bar" data="bar.data" labels="bar.labels" series="bar.series"
+                  options="bar.options"></canvas>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-6 col-sm-12" id="doughnut-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Doughnut Chart</div>
+              <div class="panel-body">
+              <canvas id="doughnut" class="chart chart-doughnut chart-xs" data="donut.data" labels="donut.labels" legend="false"></canvas>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-6 col-sm-12" id="radar-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Radar Chart</div>
+              <div class="panel-body">
+                  <canvas id="area" class="chart chart-radar" data="radar.data" labels="radar.labels" click="onClick"></canvas>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-6 col-sm-12" id="pie-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Pie Chart</div>
+              <div class="panel-body">
+                  <canvas id="pie" class="chart chart-pie chart-xs" data="pie.data" labels="pie.labels"></canvas>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-6 col-sm-12" id="polar area-chart" >
+        <div class="panel panel-default">
+          <div class="panel-heading">Polar Area Chart</div>
+          <div class="panel-body">
+            <canvas id="polar" class="chart chart-polar-area" data="polar.data" labels="polar.labels"></canvas>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6 col-sm-12" id="base-chart" >
-        <div class="panel panel-default">
-            <div class="panel-heading">Dynamic Chart</div>
-            <div class="panel-body">
-            <canvas id="base" class="chart chart-base" chart-type="dynamic.type" data="dynamic.data" labels="dynamic.labels" legend="true"></canvas>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary pull-right" ng-click="dynamic.toggle()">Toggle</button>
-    </div>
+      <div class="col-lg-6 col-sm-12" id="base-chart" >
+          <div class="panel panel-default">
+              <div class="panel-heading">Dynamic Chart</div>
+              <div class="panel-body">
+              <canvas id="base" class="chart chart-base" chart-type="dynamic.type" data="dynamic.data" labels="dynamic.labels" legend="true"></canvas>
+              </div>
+          </div>
+          <button type="button" class="btn btn-primary pull-right" ng-click="dynamic.toggle()">Toggle</button>
+      </div>
+  </div> 
+  </div>
+  
 </div>
