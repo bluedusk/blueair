@@ -92,6 +92,24 @@ angular
             })
           }
         }
+      }) .state('dashboard.day',{
+        url:'/day',
+        controller: 'RealtimeAqiCtrl',
+        templateUrl:'views/day.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+              'scripts/controllers/realtimeAqiController.js',
+              'scripts/directives/timeline/timeline.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/directives/chat/chat.js',
+              'scripts/directives/realtime/realtime.js'
+              ]
+            })
+          }
+        }
       })
       .state('dashboard.aqi',{
           templateUrl:'views/realtimeaqi.html',

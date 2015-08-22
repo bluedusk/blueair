@@ -257,5 +257,25 @@ app.get('/aqi_all_y', function (req, res) {
   );
 });
 
+//realtime aqi
+db2 = mongojs('mydb', ['aqi_hour']);
+
+app.get('/aqi_d', function (req, res) {
+
+  var icity = req.query.city;
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var day = date.getDate();
+
+  //db.aqi_hour.find({year:2015,month:8,day:22}).sort({hour:1})
+  db2.aqi_hour.find({city:icity,year:year,month:month,day:day}).sort({hour:1},
+    function (err, docs) { 
+      console.log(docs);
+      res.json(docs);
+    }
+  );
+});
+
 app.listen(3000);
 console.log("Server running on port 3000");

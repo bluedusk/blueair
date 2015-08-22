@@ -352,3 +352,115 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+/* my style */
+/*colours : ["#00cc00","#ffff00","#eb8a14","#ff0000","#993366","#904747"]*/
+
+.panel-good {
+    border-color: #00cc00;
+}
+
+.panel-good .panel-heading {
+    border-color: #00cc00;
+    color: #fff;
+    background-color: #00cc00;
+}
+
+.panel-good a {
+    color: #f0ad4e;
+}
+
+.panel-good a:hover {
+    color: #df8a13;
+}
+
+.panel-moderate {
+    border-color: #ffff00;
+}
+
+.panel-moderate .panel-heading {
+    border-color: #ffff00;
+    color: #fff;
+    background-color: #ffff00;
+}
+
+.panel-moderate a {
+    color: #f0ad4e;
+}
+
+.panel-moderate a:hover {
+    color: #df8a13;
+}
+
+.panel-unhealthy  {
+    border-color: #eb8a14;
+}
+
+.panel-unhealthy  .panel-heading {
+    border-color: #eb8a14;
+    color: #fff;
+    background-color: #eb8a14;
+}
+
+.panel-unhealthy  a {
+    color: #f0ad4e;
+}
+
+.panel-unhealthy  a:hover {
+    color: #df8a13;
+}
+
+.panel-unhealthy1  {
+    border-color: #ff0000;
+}
+
+.panel-unhealthy1  .panel-heading {
+    border-color: #ff0000;
+    color: #fff;
+    background-color: #ff0000;
+}
+
+.panel-unhealthy1  a {
+    color: #f0ad4e;
+}
+
+.panel-unhealthy1  a:hover {
+    color: #df8a13;
+}
+
+.panel-unhealthy2  {
+    border-color: #993366;
+}
+
+.panel-unhealthy2  .panel-heading {
+    border-color: #993366;
+    color: #fff;
+    background-color: #993366;
+}
+
+.panel-unhealthy2  a {
+    color: #f0ad4e;
+}
+
+.panel-unhealthy2  a:hover {
+    color: #df8a13;
+}
+
+
+.panel-hazardous  {
+    border-color: #904747;
+}
+
+.panel-hazardous  .panel-heading {
+    border-color: #904747;
+    color: #fff;
+    background-color: #904747;
+}
+
+.panel-hazardous  a {
+    color: #f0ad4e;
+}
+
+.panel-hazardous  a:hover {
+    color: #df8a13;
+}

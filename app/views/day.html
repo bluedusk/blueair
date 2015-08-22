@@ -1,0 +1,58 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">实时空气质量</h2>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        
+        <aqibox city="北京" aqi="{{aqi.value}}" comments="{{aqi.comment}}" colour="{{aqi.color}}" type="comments" update-time="{{aqi.time}}"  goto="login"></aqibox>
+<!--         <aqibox city="北京北京" aqi="12" comments="Good" colour="moderate" type="user"  goto="login"></aqibox>
+        <aqibox city="北京" aqi="18" comments="New orders!" colour="unhealthy" type="shopping-cart"  goto="login"></aqibox>
+        <aqibox city="北京" aqi="18" comments="New orders!" colour="unhealthy1" type="shopping-cart"  goto="login"></aqibox>
+        <aqibox city="北京" aqi="18" comments="New orders!" colour="unhealthy2" type="shopping-cart"  goto="login"></aqibox>
+        <aqibox city="北京" aqi="24" comments="Support tickets!" colour="hazardous" type="support" goto="login"></aqibox> -->
+
+    </div>
+ 
+ <div class="row">
+     <div class="col-lg-12">
+         <h2 class="page-header">24小时空气质量</h2>
+     </div>
+     <!-- /.col-lg-12 -->
+ </div>
+    
+    <!-- /.panel -->
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+                </div>
+                <!-- /.panel-heading -->
+                <timeline></timeline>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                </div>
+                <!-- /.panel-heading -->
+                <notifications></notifications> 
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+            <chat></chat>
+             <!-- /.panel .chat-panel -->
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+</div>
