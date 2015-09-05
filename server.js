@@ -56,12 +56,12 @@ app.put('/contactlist/:id', function (req, res) {
 
 //////////////////////////////////
 
-db1 = mongojs('mydb', ['aqi_bj']);
+db1 = mongojs('mydb', ['aqi']);
 
 app.get('/test', function (req, res) {
   console.log('test------------');
 
-db1.aqi_bj.aggregate( [
+db1.aqi.aggregate( [
                         { $match : { avgaqi: { $gt : 150} , year: 2008, month:4} },
                         { $group: { _id: null, count: { $sum: 1 } } }
                       ], 
@@ -75,7 +75,7 @@ db1.aqi_bj.aggregate( [
 app.get('/aqidata', function (req, res) {
   console.log('aqidata------------');
 
-  db1.aqi_bj.find().limit(10,
+  db1.aqi.find().limit(10,
     function (err, docs) {
     res.json(docs);
     }
@@ -86,12 +86,12 @@ app.get('/aqipie', function (req, res) {
 
   console.log(req.query);  console.log(req.params);
 
-
+  var city = req.query.city;
   var iyear = parseInt(req.query.year);
   var imonth = parseInt(req.query.month);
 
 
-  db1.aqi_bj.find({year:iyear,month:imonth},
+  db1.aqi.find({city:city,year:iyear,month:imonth},
     function (err, docs) {
 
       
@@ -132,12 +132,12 @@ app.get('/aqiline_m', function (req, res) {
   console.log(req.query);  
   console.log(req.params);
 
-
+  var city = req.query.city;
   var iyear = parseInt(req.query.year);
   var imonth = parseInt(req.query.month);
 
 
-  db1.aqi_bj.find({year:iyear,month:imonth},
+  db1.aqi.find({city:city,year:iyear,month:imonth},
     function (err, docs) {
 
       var days = [];
@@ -169,11 +169,12 @@ app.get('/aqi_m', function (req, res) {
   console.log(req.params);
 
 
+  var city = req.query.city;
   var iyear = parseInt(req.query.year);
   var imonth = parseInt(req.query.month);
 
 
-  db1.aqi_bj.find({year:iyear,month:imonth},
+  db1.aqi.find({city:city,year:iyear,month:imonth},
     function (err, docs) { 
       console.log(docs);
       res.json(docs);
@@ -188,8 +189,9 @@ app.get('/aqi_y', function (req, res) {
   console.log(req.params);
 
 
+  var city = req.query.city;
   var iyear = parseInt(req.query.year);
-  db1.aqi_bj.find({year:iyear},
+  db1.aqi.find({city:city,year:iyear},
     function (err, docs) { 
       console.log(docs);
       res.json(docs);
@@ -198,6 +200,7 @@ app.get('/aqi_y', function (req, res) {
 });
 
 
+//generate aqi_y data
 app.get('/aqi_all', function (req, res) {
 
 
@@ -258,9 +261,19 @@ app.get('/aqi_all_y', function (req, res) {
 });
 
 //realtime aqi
-db2 = mongojs('mydb', ['aqi_hour']);
+var db3 = mongojs('mydb', ['aqi_hour']);
+db2.on('error', function(err) {
+    console.log('database error', err);
+});
 
 app.get('/aqi_d', function (req, res) {
+  db3.on('error', function(err) {
+      console.log('database error', err);
+  });
+  db3.on('ready', function(err) {
+      console.log('database ready', err);
+  });
+
 
   var icity = req.query.city;
   var date = new Date();
@@ -269,7 +282,7 @@ app.get('/aqi_d', function (req, res) {
   var day = date.getDate();
 
   //db.aqi_hour.find({year:2015,month:8,day:22}).sort({hour:1})
-  db2.aqi_hour.find({city:icity,year:year,month:month,day:day}).sort({hour:1},
+  db3.aqi_hour.find({city:icity,year:year,month:month,day:day}).sort({hour:-1},
     function (err, docs) { 
       console.log(docs);
       res.json(docs);

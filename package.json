@@ -8,7 +8,7 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "mongojs": "^1.2.1"
+    "mongojs": "^1.3.0"
   },
   "devDependencies": {
     "grunt": "^0.4.1",

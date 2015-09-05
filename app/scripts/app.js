@@ -21,11 +21,11 @@ angular
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    $urlRouterProvider.otherwise('/aqi/day');
 
     $stateProvider
-      .state('dashboard', {
-        url:'/dashboard',
+      .state('aqi', {
+        url:'/aqi',
         templateUrl: 'views/dashboard/main.html',
         resolve: {
             loadMyDirectives:function($ocLazyLoad){
@@ -74,7 +74,7 @@ angular
             }
         }
     })
-      .state('dashboard.home',{
+      .state('aqi.home',{
         url:'/home',
         controller: 'MainCtrl',
         templateUrl:'views/dashboard/home.html',
@@ -92,7 +92,7 @@ angular
             })
           }
         }
-      }) .state('dashboard.day',{
+      }) .state('aqi.day',{
         url:'/day',
         controller: 'RealtimeAqiCtrl',
         templateUrl:'views/day.html',
@@ -111,11 +111,11 @@ angular
           }
         }
       })
-      .state('dashboard.aqi',{
+      .state('aqi.aqi',{
           templateUrl:'views/realtimeaqi.html',
           url:'/aqi'
       })
-      .state('dashboard.test',{
+      .state('aqi.test',{
           templateUrl:'views/test.html',
           controller:'TestCtrl',
           url:'/test',
@@ -128,11 +128,11 @@ angular
             }
           }
       })
-      .state('dashboard.form',{
+      .state('aqi.form',{
         templateUrl:'views/form.html',
         url:'/form'
     })
-      .state('dashboard.blank',{
+      .state('aqi.blank',{
         templateUrl:'views/pages/blank.html',
         url:'/blank'
     })
@@ -140,9 +140,9 @@ angular
         templateUrl:'views/pages/login.html',
         url:'/login'
     })
-      .state('dashboard.chart',{
+      .state('aqi.month',{
         templateUrl:'views/chart.html',
-        url:'/chart',
+        url:'/month',
         controller:'ChartCtrl',
         resolve: {
           loadMyFile:function($ocLazyLoad) {
@@ -159,7 +159,7 @@ angular
             })
           }
         }
-    }).state('dashboard.year',{
+    }).state('aqi.year',{
         templateUrl:'views/chartByYear.html',
         url:'/charty/:year',
         controller:'ChartCtrl',
@@ -179,31 +179,31 @@ angular
           }
         }
     })
-      .state('dashboard.table',{
+      .state('aqi.table',{
         templateUrl:'views/table.html',
         url:'/table'
     })
-      .state('dashboard.panels-wells',{
+      .state('aqi.panels-wells',{
           templateUrl:'views/ui-elements/panels-wells.html',
           url:'/panels-wells'
       })
-      .state('dashboard.buttons',{
+      .state('aqi.buttons',{
         templateUrl:'views/ui-elements/buttons.html',
         url:'/buttons'
     })
-      .state('dashboard.notifications',{
+      .state('aqi.notifications',{
         templateUrl:'views/ui-elements/notifications.html',
         url:'/notifications'
     })
-      .state('dashboard.typography',{
+      .state('aqi.typography',{
        templateUrl:'views/ui-elements/typography.html',
        url:'/typography'
    })
-      .state('dashboard.icons',{
+      .state('aqi.icons',{
        templateUrl:'views/ui-elements/icons.html',
        url:'/icons'
    })
-      .state('dashboard.grid',{
+      .state('aqi.grid',{
        templateUrl:'views/ui-elements/grid.html',
        url:'/grid'
    })

@@ -12,25 +12,28 @@ angular.module('sbAdminApp')
     var colors = ["good","moderate","unhealthy","unhealthy1","unhealthy2","hazardous"];
     $scope.aqi = {
 
-        value: 501,
+        value: -999,
         color:"good",
         comment:"good",
-        time:"2015年8月22日  23:00"
+        time:"暂时没有数据"
 
     }
 
     var updateAqi = function(){
 
 
-         $http.get('/aqi_d', {params: {city:"beijing"}}).success(function(response) {
+         $http.get('/aqi_d', {params: {city:"beijing"},timeout:5000})
+         .then(function(response){
 
-            console.log(response[0]);
-            var aqiObj = response[0];
+            if (response.length == 0) { return};
+            console.log(response.data);
+            var aqiObj = response.data[0];
             $scope.aqi.value = aqiObj.value;
             $scope.aqi.time = aqiObj.updateTime;
 
-
-
+        },function(err){
+            //handle err: timeout or other
+            console.log(err);
         });
 
     }

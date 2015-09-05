@@ -16,7 +16,7 @@ angular.module('sbAdminApp')
     $scope.hasMValue = true;
 
     $scope.search = {
-
+        city : "Beijing",
         year : $stateParams.year || now.getFullYear(),
         month : now.getMonth()+1
 
@@ -24,7 +24,7 @@ angular.module('sbAdminApp')
 
     $scope.goSearchY = function(){
 
-        // $state.go("dashboard.year", {
+        // $state.go("aqi.year", {
         //        year: $scope.search.year
         // });
         // $location.path('charty');
@@ -41,7 +41,7 @@ angular.module('sbAdminApp')
     }
 
     var getAqiPerY = function(){
-          $http.get('/aqi_y', {params: {year:$scope.search.year}}).success(function(response) {
+          $http.get('/aqi_y', {params: {city:$scope.search.city,year:$scope.search.year}}).success(function(response) {
 
             var data = processYearData(response);
             $scope.aqi_annual_pie = initPieChart(data);
@@ -51,13 +51,13 @@ angular.module('sbAdminApp')
         });
 
     }
-    if ($state.current.name === "dashboard.year") {
+    if ($state.current.name === "aqi.year") {
 
         getAqiPerY();
 
     };
     var getAqiPerM = function(){
-          $http.get('/aqi_m', {params: {year:$scope.search.year,month:$scope.search.month}}).success(function(response) {
+          $http.get('/aqi_m', {params: {city:$scope.search.city,year:$scope.search.year,month:$scope.search.month}}).success(function(response) {
 
             console.info(response.length);
 
@@ -74,7 +74,7 @@ angular.module('sbAdminApp')
         });
 
     }
-    if ($state.current.name === "dashboard.chart") {
+    if ($state.current.name === "aqi.month") {
 
         getAqiPerM();
 
@@ -273,7 +273,7 @@ angular.module('sbAdminApp')
 
     var getAqiLine = function(){
 
-        $http.get('/aqiline_m', {params: {year:$scope.search.year,month:$scope.search.month}}).success(function(response) {
+        $http.get('/aqiline_m', {params: {city:$scope.search.city,year:$scope.search.year,month:$scope.search.month}}).success(function(response) {
           console.log(response);
 
           $scope.aqi_monthly_line = {
